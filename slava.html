@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>смешность картинкость смотресть бесплатность</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        /* --- СТИЛИ ГАЛЕРЕИ --- */
+        
+        .gallery-container {
+            display: grid;
+            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .gallery-item {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            /* Показываем, что можно кликнуть */
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+        /* --- СТИЛИ ДЛЯ МОДАЛЬНОГО ОКНА (ЛАЙТБОКСА) --- */
+        
+        .modal {
+            display: none;
+            /* Скрыто по умолчанию */
+            position: fixed;
+            /* Фиксируем поверх всего */
+            z-index: 1000;
+            /* Чтобы было точно сверху */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            /* Черный полупрозрачный фон */
+            justify-content: center;
+            /* Центрируем по горизонтали */
+            align-items: center;
+            /* Центрируем по вертикали */
+        }
+        /* Картинка внутри модального окна */
+        
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            animation: zoom 0.3s;
+            /* Анимация появления */
+        }
+        /* Кнопка закрытия (крестик) */
+        
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .close:hover {
+            color: #bbb;
+        }
+        /* Анимация увеличения */
+        
+        @keyframes zoom {
+            from {
+                transform: scale(0)
+            }
+            to {
+                transform: scale(1)
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>смешность картинкость смотресть бесплатность</h1>
+    <p style="text-align: center; color: #666;">нажмитесть насть картинкость чтобсть увеличисть</p>
+
+    <div class="gallery-container">
+        <div class="gallery-item"><img src="https://i.pinimg.com/736x/55/aa/79/55aa799c8a8b54f1cfc7db05f8565b2a.jpg" alt="Пейзаж 1"></div>
+        <div class="gallery-item"><img src="https://i.pinimg.com/736x/6e/ba/89/6eba89b5d7a14b0410abd6edfe3e3e31.jpg" alt="Пейзаж 2"></div>
+        <div class="gallery-item"><img src="https://i.pinimg.com/736x/49/55/46/4955463ec177f2089ea46f72feaa1adc.jpg" alt="Пейзаж 3"></div>
+        <div class="gallery-item"><img src="https://i.pinimg.com/736x/68/c9/c1/68c9c1af848da5cfc706c2f6fc15e6b1.jpg" alt="Пейзаж 4"></div>
+        <div class="gallery-item"><img src="https://i.pinimg.com/736x/df/e9/46/dfe94642a8bcda697d923b836092cdb6.jpg" alt="Пейзаж 5"></div>
+        <div class="gallery-item"><img src="https://i.pinimg.com/736x/94/f7/29/94f7291c0b8d5bf327faa2626a1869eb.jpg" alt="Пейзаж 6"></div>
+        <div class="gallery-item"><img src="https://i.pinimg.com/736x/51/9e/41/519e41b219456bbec516885ca7ee8560.jpg" alt="Пейзаж 7"></div>
+        <div class="gallery-item"><img src="https://i.pinimg.com/736x/0a/04/ce/0a04ce85896ac96bf7a4e080150fd791.jpg" alt="Пейзаж 8"></div>
+        <div class="gallery-item"><img src="https://i.pinimg.com/736x/7d/a0/70/7da0700c4f333a762ba664399f16e657.jpg" alt="Пейзаж 9"></div>
+        <div class="gallery-item"><img src="https://i.pinimg.com/736x/f4/26/72/f42672a324347f7a6600328b988a6de3.jpg" alt="Пейзаж 10"></div>
+        <div class="gallery-item"><img src="https://i.pinimg.com/736x/1e/25/6d/1e256d23cdbc070c992bfd0ffbcf7609.jpg" alt="Пейзаж 11"></div>
+        <div class="gallery-item"><img src="https://i.pinimg.com/736x/e2/ae/22/e2ae2283ce491b91d800d74941a064e8.jpg" alt="Пейзаж 12"></div>
+    </div>
+
+    <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="img01">
+    </div>
+
+    <script>
+        // Находим элементы
+        const modal = document.getElementById("myModal");
+        const modalImg = document.getElementById("img01");
+        const closeBtn = document.getElementsByClassName("close")[0];
+
+        // Находим все картинки в галерее
+        const galleryImages = document.querySelectorAll('.gallery-item img');
+        // Для каждой картинки добавляем событие "клик"
+        galleryImages.forEach(img => {
+            img.onclick = function() {
+                modal.style.display = "flex"; // Показываем модальное окно
+                modalImg.src = this.src; // Берем src у нажатой картинки и ставим в модальную
+            }
+        });
+
+        // Функция закрытия при клике на крестик
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // Функция закрытия при клике на темный фон
+        modal.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
